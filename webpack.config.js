@@ -3,11 +3,10 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 module.exports = {
   entry: {
-    app_createElection: './app/scripts/createElection.js'
-    app_manageElection: './app/scripts/manageElection.js'
+    app_createElection: './app/scripts/createElection.js',
+    app_manageElection: './app/scripts/manageElection.js',
     app_doElection: './app/scripts/doElection.js'
-  }
-  './app/scripts/index.js',
+  },
   mode: 'production',
   output: {
     path: path.resolve(__dirname, 'build'),
@@ -16,7 +15,10 @@ module.exports = {
   plugins: [
     // Copy our app's index.html to the build folder.
     new CopyWebpackPlugin([
-      { from: './app/index.html', to: 'index.html' }
+      { from: './app/index.html', to: 'index.html' },
+      {from: './app/createElection.html', to: 'createElection.html'},
+      {from: './app/doElection.html', to: 'doElection.html'},
+      {from: './app/manageElection.html', to: 'manageElection.html'}
     ])
   ],
   devtool: 'source-map',
